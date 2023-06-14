@@ -49,7 +49,7 @@ async function run() {
 
         app.get('/all-task', async (req, res) => {
 
-            const result = await taskCollection.find().toArray()
+            const result = await taskCollection.find().sort({date: -1}).toArray()
             res.send(result)
 
         })
