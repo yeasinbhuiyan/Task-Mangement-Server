@@ -72,29 +72,17 @@ async function run() {
         })
 
 
-        app.delete('/product/delete/:id', async (req, res) => {
+        app.delete('/task-delete/:id', async (req, res) => {
             const id = req.params.id
             const query = { _id: new ObjectId(id) }
-            const result = await productsCollection.deleteOne(query)
+            const result = await taskCollection.deleteOne(query)
             res.send(result)
 
         })
 
 
 
-        app.delete('/select-product/delete', async (req, res) => {
-
-            const selectedProducts = req.body
-            console.log(selectedProducts)
-            const query = { _id: { $in: selectedProducts.map(id => new ObjectId(id)) } }
-            // console.log(query)
-            const result = await productsCollection.deleteMany(query)
-            res.send(result)
-
-        })
-
-
-
+      
 
 
 
